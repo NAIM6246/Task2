@@ -2,7 +2,7 @@ package dtos
 
 type LoginDto struct {
 	Email    string `json:"email"`
-	Password string `json:"password"`
+	Password string `json:"pass"`
 }
 
 type UserDto struct {
@@ -11,7 +11,12 @@ type UserDto struct {
 	Email    string `json:"email"`
 }
 
-type LoginResponseDto struct {
-	Bearer string  `json:"token"`
-	User   UserDto `json:"user"`
+type UserCreteDto struct {
+	Name     string `json:"name"`
+	Email    string `json:"email"`
+	Password string `json:"pass"`
+}
+
+type AccessTokenDto struct {
+	Bearer string
 }

@@ -4,14 +4,15 @@ import (
 	"errors"
 
 	"github.com/task2/models/domains"
+	"github.com/task2/models/dtos"
 	"github.com/task2/repositories"
 )
 
 type IUserService interface {
-	Create(user *domains.User) (*domains.User, error)
+	Create(user *dtos.UserCreteDto) (*domains.User, error)
 	GetAll() ([]*domains.User, error)
 	GetByID(id int) (*domains.User, error)
-	Update(id int, userData *domains.User) (*domains.User, error)
+	Update(id int, userData *dtos.UserCreteDto) (*domains.User, error)
 }
 
 type UserService struct {
@@ -26,8 +27,13 @@ func NewUserService(
 	}
 }
 
-func (h *UserService) Create(user *domains.User) (*domains.User, error) {
-	createdUser, err := h.userRepository.Create(user)
+func (h *UserService) Create(data *dtos.UserCreteDto) (*domains.User, error) {
+	user := domains.User{
+		Name:     data.Name,
+		Email:    data.Email,
+		Password: data.Password,
+	}
+	createdUser, err := h.userRepository.Create(&user)
 	if err != nil {
 		return nil, err
 	}
@@ -41,14 +47,13 @@ func (h *UserService) GetByID(id int) (*domains.User, error) {
 	return h.userRepository.GetByID(id)
 }
 
-func (h *UserService) Update(id int, userData *domains.User) (*domains.User, error) {
+func (h *UserService) Update(id int, userData *dtos.UserCreteDto) (*domains.User, error) {
 	userToUpdate, err := h.GetByID(id)
 	if err != nil {
 		return nil, errors.New("user not found")
 	}
 	userToUpdate.Email = userData.Email
 	userToUpdate.Name = userData.Name
-	userToUpdate.UserName = userData.UserName
 	updatedUser, err := h.userRepository.Update(userToUpdate)
 	if err != nil {
 		return nil, errors.New("failed to update user")

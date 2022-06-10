@@ -36,14 +36,14 @@ func (h *AuthHandler) login(w http.ResponseWriter, r *http.Request) {
 	var loginDto dtos.LoginDto
 	parsingErr := json.NewDecoder(r.Body).Decode(&loginDto)
 	if parsingErr != nil {
-		BadRequest(w, parsingErr)
+		BadRequest(w, parsingErr.Error())
 		return
 	}
-	fmt.Println("asdf")
+	fmt.Println(loginDto)
 	token, err := h.authService.Login(&loginDto)
 	if err != nil {
 		fmt.Println(err)
-		BadRequest(w, err)
+		BadRequest(w, err.Error())
 		return
 	}
 	Ok(w, token)

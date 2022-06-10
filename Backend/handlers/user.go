@@ -7,8 +7,9 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/task2/auth"
 	"github.com/task2/handlers/param"
-	"github.com/task2/models/domains"
+	"github.com/task2/models/dtos"
 	"github.com/task2/services"
 )
 
@@ -16,19 +17,22 @@ type IUserHandler interface{ IHandler }
 
 type UserHandler struct {
 	userService services.IUserService
+	auth        auth.IAuth
 }
 
-func NewUserHandler(userService services.IUserService) IUserHandler {
+func NewUserHandler(userService services.IUserService,
+	auth auth.IAuth) IUserHandler {
 	return &UserHandler{
 		userService: userService,
+		auth:        auth,
 	}
 }
 
 func (h *UserHandler) Handle(router chi.Router) {
-	router.Get("/", h.getAllUser)
+	router.With(h.auth.Authentication).Get("/", h.getAllUser)
 	router.Post("/", h.createUser)
 	router.Get("/{userID}", h.getUserByID)
-	router.Get("/{userID}", h.updateUser)
+	router.With(h.auth.Authentication).Put("/{userID}", h.updateUser)
 }
 
 func (h *UserHandler) getAllUser(w http.ResponseWriter, r *http.Request) {
@@ -40,8 +44,7 @@ func (h *UserHandler) getAllUser(w http.ResponseWriter, r *http.Request) {
 	Ok(w, users)
 }
 func (h *UserHandler) createUser(w http.ResponseWriter, r *http.Request) {
-	user := domains.User{}
-	fmt.Println("hi")
+	user := dtos.UserCreteDto{}
 	parSingErr := json.NewDecoder(r.Body).Decode(&user)
 	if parSingErr != nil {
 		BadRequest(w, parSingErr)
@@ -58,6 +61,7 @@ func (h *UserHandler) createUser(w http.ResponseWriter, r *http.Request) {
 
 func (h *UserHandler) getUserByID(w http.ResponseWriter, r *http.Request) {
 	id := param.Int(r, "userID")
+	fmt.Println("hi", id)
 	user, err := h.userService.GetByID(id)
 	if err != nil {
 		NotFound(w, err)
@@ -69,7 +73,7 @@ func (h *UserHandler) getUserByID(w http.ResponseWriter, r *http.Request) {
 
 func (h *UserHandler) updateUser(w http.ResponseWriter, r *http.Request) {
 	id := param.Int(r, "userID")
-	userData := domains.User{}
+	userData := dtos.UserCreteDto{}
 	parsingErr := json.NewDecoder(r.Body).Decode(&userData)
 	if parsingErr != nil {
 		BadRequest(w, parsingErr)

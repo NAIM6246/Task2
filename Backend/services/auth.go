@@ -11,7 +11,7 @@ import (
 )
 
 type IAuthService interface {
-	Login(loginDto *dtos.LoginDto) (*dtos.LoginResponseDto, error)
+	Login(loginDto *dtos.LoginDto) (*dtos.AccessTokenDto, error)
 }
 
 type AuthService struct {
@@ -29,8 +29,9 @@ func NewAuthService(
 	}
 }
 
-func (that *AuthService) Login(loginDto *dtos.LoginDto) (*dtos.LoginResponseDto, error) {
+func (that *AuthService) Login(loginDto *dtos.LoginDto) (*dtos.AccessTokenDto, error) {
 	user, err := that.userRepository.GetByFilter("email=?", loginDto.Email)
+	fmt.Println(user.Password, loginDto.Password)
 	if err != nil {
 		fmt.Println(err)
 		return nil, errors.New("this email is not registerred")
@@ -45,12 +46,7 @@ func (that *AuthService) Login(loginDto *dtos.LoginDto) (*dtos.LoginResponseDto,
 		return nil, err
 	}
 	fmt.Println("logged in")
-	return &dtos.LoginResponseDto{
+	return &dtos.AccessTokenDto{
 		Bearer: token,
-		User: dtos.UserDto{
-			Name:     user.Name,
-			UserName: user.UserName,
-			Email:    user.Email,
-		},
 	}, nil
 }
