@@ -18,7 +18,7 @@ func mapDBConfig() {
 		Port:     1433,
 		User:     "",
 		Password: "",
-		DbName:   "TravelBD",
+		DbName:   "BlogApp",
 	}
 }
 
