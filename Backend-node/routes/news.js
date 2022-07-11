@@ -1,20 +1,9 @@
 const express = require('express');
+const newsHandlers = require('../handlers/news');
 
-const news = {};
+router = express.Router();
 
-news.NewsRoutes = (app) => {
-    const router = express.Router();
-    app.use('/news',router);
-    router.get('/',(req,res)=>{
-        res.send('This is news!!');
-    })
-    router.post('/',(req,res) => {
-        console.log(req.body);
-        res.send('news created');
-    })
-    app.get('/',(req,res)=>{
-        res.send('default page');
-    })
-};
+router.get('/',newsHandlers.getNewses);
+router.post('/',newsHandlers.createNews);
 
-module.exports = news;
+module.exports = router;

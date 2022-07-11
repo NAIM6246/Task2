@@ -1,17 +1,9 @@
 const express = require('express');
+const userHandler = require('../handlers/user')
 
-const user = {};
+const router = express.Router();
 
-user.UserRoutes = (app) => {
-    const router = express.Router();
-    app.use('/users',router);
-    router.get('/',(req,res)=>{
-        res.send('This is user!!');
-    })
-    router.post('/',(req,res) =>{
-        console.log(req.body);
-        res.send('user created');
-    })
-};
+router.get('/',userHandler.getUsers);
+router.post('/',userHandler.createUser);
 
-module.exports = user;
+module.exports = router;
