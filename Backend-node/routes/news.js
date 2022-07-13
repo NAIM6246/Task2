@@ -1,9 +1,11 @@
 const express = require('express');
-const newsHandlers = require('../handlers/news');
+const newsHandler = require('../handlers/news');
 
 router = express.Router();
 
-router.get('/',newsHandlers.getNewses);
-router.post('/',newsHandlers.createNews);
+router.get('/',newsHandler.getNewses);
+router.post('/',newsHandler.createNews);
+router.put('/',newsHandler.updateNews);
+router.delete('/',newsHandler.deleteNews);
 
 module.exports = router;

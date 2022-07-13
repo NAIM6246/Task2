@@ -1,18 +1,29 @@
 
 
 //scaffolding
-const news = {};
+const newsHandler = {};
 
 let newses = [];
 let newsID = 1;
 
-news.getNewses = (req,res) =>{
+newsHandler.getNewses = (req,res) =>{
     res.send(newses);
 }
 
-news.createNews = (req,res)=> {
-    newses.push({...req.body, id: newsID++});
-    res.send('news created');
+newsHandler.createNews = (req,res)=> {
+    const newsToCreate = req.body;
+    console.log(newsToCreate);
+    res.send(`news created ${newsToCreate.news}`);
 }
 
-module.exports = news;
+newsHandler.updateNews = (req,res) => {
+    //to do
+    res.send('news updated');
+}
+
+newsHandler.deleteNews = (req,res) => {
+    //to do
+    res.send('news deleted');
+}
+
+module.exports = newsHandler;
