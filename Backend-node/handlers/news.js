@@ -1,19 +1,27 @@
+const newsService = require('../services/news');
 
+const db = require('../conn/connection');
 
 //scaffolding
 const newsHandler = {};
 
-let newses = [];
-let newsID = 1;
+const News = db.news
+
 
 newsHandler.getNewses = (req,res) =>{
-    res.send(newses);
+    // res.send(newses);
 }
 
 newsHandler.createNews = (req,res)=> {
-    const newsToCreate = req.body;
+    var newsToCreate = {
+        Title : req.body.Title,
+        Description : req.body.Description,
+        AuthorID : req.body.AuthorID,
+        IsDeleted : req.body.IsDeleted ?  req.body.IsDeleted : false
+    };
     console.log(newsToCreate);
-    res.send(`news created ${newsToCreate.news}`);
+ let  news = News.create(newsToCreate);
+    res.status(200).send(news);
 }
 
 newsHandler.updateNews = (req,res) => {
