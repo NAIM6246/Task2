@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded( {extended: true}));
 
 app.use('/news',newsRoutes);
-app.use('/users/',userRoutes);
+app.use('/users',userRoutes);
 
 
 app.use((err,req,res,next) => {

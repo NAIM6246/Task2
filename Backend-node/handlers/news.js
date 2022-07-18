@@ -30,7 +30,8 @@ newsHandler.getAllNews = async (req,res) => {
 }
 
 newsHandler.getNewsByID = async (req,res) => {
-    let NewsID = req.param.newsID
+    let newsID = req.params.newsID
+    console.log(newsID);
     let news = await News.findOne({where :{id : newsID}});
     if(news) {
         res.status(200).send(news);
