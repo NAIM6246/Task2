@@ -1,9 +1,10 @@
+const bcrypt = require('bcrypt');
+const db = require('../conn/connection');
+const user = require('../models/domains/user');
+
 
 //scaffolding
 const userHandler = {};
-
-const db = require('../conn/connection');
-const user = require('../models/domains/user');
 
 const Users = db.users
 
@@ -11,8 +12,8 @@ const Users = db.users
 
 userHandler.createUser = async (req,res) =>{
     var userToCreate = req.body;
+    userToCreate.Password = await bcrypt.hash(userToCreate.Password,10);
     console.log(userToCreate);
-
     let user = await Users.create(userToCreate);
     res.status(200).send(user);
 }
@@ -39,7 +40,7 @@ userHandler.getUserByID = async (req,res) => {
 userHandler.updateUser = async (req,res) => {
     let userID = req.params.userID
     let updateData = req.body
-    let updatedUser = await Users.update(
+    await Users.update(
         updateData,{ where :{id: userID}}
         )
     console.log(updatedUser);
