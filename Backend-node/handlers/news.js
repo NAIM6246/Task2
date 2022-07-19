@@ -10,10 +10,10 @@ const News = db.news
 
 newsHandler.createNews = async (req,res)=> {
     var newsToCreate = {
-        Title : req.body.Title,
-        Description : req.body.Description,
-        AuthorID : req.body.AuthorID,
-        IsDeleted : req.body.IsDeleted ?  req.body.IsDeleted : false
+        Title : req.body.title,
+        Description : req.body.description,
+        AuthorID : req.body.authorID,
+        IsDeleted : req.body.isDeleted ?  req.body.isDeleted : false
     };
     // console.log(newsToCreate);
     let news = await News.create(newsToCreate);

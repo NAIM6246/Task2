@@ -1,11 +1,12 @@
 const express = require('express');
 const cors = require('cors');
+const env = require('dotenv');
 
 const newsRoutes = require('./routes/news');
 const userRoutes = require('./routes/user');
 
 const app = express();
-
+env.config();
 var corsOption = {
     origin: 'https://localhost:8081'
 }
@@ -23,7 +24,7 @@ app.use((err,req,res,next) => {
     if(err.message){
         res.status(500).send(err.message);
     } else {
-        res.status(500).send('there was an error occured');
+        res.status(500).send('an internal error occured');
     }
 } )
 app.listen(3000, ()=>{

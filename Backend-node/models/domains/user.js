@@ -18,19 +18,19 @@ module.exports = (sequelize, DataTypes)=>{
             primaryKey: true,
             allowNull : false
         },
-        Name : {
+        name : {
             type : DataTypes.STRING,
             allowNull : false
         },
-        Email : {
+        email : {
             type : DataTypes.STRING,
             allowNull : false
         },
-        Phone : {
+        phone : {
             type : DataTypes.STRING,
             allowNull : false
         },
-        Password : {
+        password : {
             type : DataTypes.STRING,
             allowNull : false
         },

@@ -16,19 +16,19 @@ module.exports = (sequelize, DataTypes)=>{
             primaryKey: true,
             allowNull : false
         },
-        Title : {
+        title : {
             type : DataTypes.STRING,
             allowNull : false
         },
-        Description : {
+        description : {
             type : DataTypes.TEXT,
             allowNull : false
         },
-        AuthorID : {
+        authorID : {
             type : DataTypes.INTEGER,
             allowNull : false
         },
-        IsDeleted : {
+        isDeleted : {
             type : DataTypes.BOOLEAN
         },
     })

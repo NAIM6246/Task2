@@ -11,8 +11,5 @@ router.route('/:newsID')
     .get(newsHandler.getNewsByID)
     .put(newsHandler.updateNews)
     .delete(newsHandler.deleteNews);
-// router.get('/:newsID',newsHandler.getNewsByID);
-// router.put('/:newsID',newsHandler.updateNews);
-// router.delete('/:newsID',newsHandler.deleteNews);
 
 module.exports = router;

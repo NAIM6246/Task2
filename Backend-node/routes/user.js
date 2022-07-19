@@ -1,11 +1,20 @@
 const express = require('express');
-const userHandler = require('../handlers/user')
+const userHandler = require('../handlers/user');
+const newsHandler = require('../handlers/news');
+const auth = require('../auth/authentication');
 
 const router = express.Router();
 
-router.get('/',userHandler.getUsers);
-router.get('/:userID',userHandler.getUserByID);
-router.post('/',userHandler.createUser);
-router.put('/:userID',userHandler.updateUser);
+router.route('/')
+    .get(auth.Autheticate,userHandler.getUsers)
+    .post(userHandler.createUser);
+
+router.post('/login',userHandler.login);
+
+router.route('/:userID')
+    .get(auth.Autheticate,userHandler.getUserByID)
+    .put(auth.Autheticate,userHandler.updateUser);
+
+router.get('/:userID/newses',auth.Autheticate,newsHandler.getNewsByAuthorID)
 
 module.exports = router;
