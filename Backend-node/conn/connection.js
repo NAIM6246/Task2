@@ -29,7 +29,7 @@ db.sequelize.authenticate()
 db.news = require('../models/domains/news')(db.sequelize,DataTypes)
 db.users = require('../models/domains/user')(db.sequelize,DataTypes)
 
-db.sequelize.sync({ force:false })
+db.sequelize.sync({ force:true })
 .then(()=>{
     console.log('resynced database');
 })
