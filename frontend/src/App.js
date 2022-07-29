@@ -1,5 +1,5 @@
-import React from 'react';
-import {BrowserRouter as Router, Route, Routes,Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import {BrowserRouter as Router, Route, Routes,Link,useNavigate } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -11,6 +11,10 @@ import UserBlogs from './components/UserBlogs';
 import UserProfile from './components/UserProfile';
 
 function App() {
+  const isLoggedin = localStorage.getItem("isAuth");
+  const [isAuth, setAuth] =  useState(isLoggedin);
+  console.log("auth " ,isAuth);
+
   return (
     <div >
       <header>
@@ -20,16 +24,19 @@ function App() {
       
       <Router>
         <nav className='navbar'>
+          {console.log("auth " ,isAuth)}
             <Link to="/">Home</Link>
-            <Link to="/login">Login</Link>
-            <Link to="register">Register</Link>
+            { !isAuth ? <Link to="/login">Login</Link> : <></>}
+            { isAuth && <Link to="/blogs/add">Create Post</Link>}
+            <Link to="/users/:id">Profile</Link>
         </nav>
+
         <Routes>
           <Route path= "/" element={<Home />} />
-          <Route path="/login" element={<Login />}/>
+          <Route path="/login" element={<Login setAuth={setAuth}/>}/>
           <Route path='/register' element={<Register/>} />
-          <Route path='/addblog' element={<AddBlog/>} />
-          <Route path='/blog/:id' element={<BlogDetails/>} />
+          <Route path='/blogs/add' element={<AddBlog/>} />
+          <Route path='/blogs/:id' element={<BlogDetails/>} />
           <Route path='/users/:id/blogs' element={<UserBlogs/>} />
           <Route path='/users/:id' element={<UserProfile/>} />
         </Routes>

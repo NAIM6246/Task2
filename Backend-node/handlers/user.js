@@ -17,7 +17,7 @@ userHandler.createUser = async (req,res) =>{
         userToCreate.password = await bcrypt.hash(userToCreate.password,10);
         console.log(userToCreate);
         let user = await Users.create(userToCreate);
-        res.status(200).send(user);
+        res.status(201).send(user);
     } catch (err) {
         throw new Error(err);
     }

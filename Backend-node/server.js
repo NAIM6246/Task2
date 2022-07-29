@@ -8,7 +8,7 @@ const userRoutes = require('./routes/user');
 const app = express();
 env.config();
 var corsOption = {
-    origin: 'https://localhost:8081'
+    origin: 'http://localhost:3000'
 }
 
 app.use(cors(corsOption));
@@ -26,7 +26,7 @@ app.use((err,req,res,next) => {
     } else {
         res.status(500).send('an internal error occured');
     }
-} )
-app.listen(3000, ()=>{
-    console.log('listening on port 3000');
+})
+app.listen(5000, ()=>{
+    console.log('listening on port 5000');
 })
