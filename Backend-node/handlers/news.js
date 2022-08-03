@@ -17,7 +17,7 @@ newsHandler.createNews = async (req,res)=> {
     };
     // console.log(newsToCreate);
     let news = await News.create(newsToCreate);
-    res.status(200).send(news);
+    res.status(201).send(news);
 }
 
 newsHandler.getAllNews = async (req,res) => {
