@@ -1,4 +1,4 @@
-// news.News = {
+// Blogs.Blogs = {
 //     ID,
 //     Title,
 //     Description,
@@ -9,7 +9,7 @@
 // }
 
 module.exports = (sequelize, DataTypes)=>{
-    const News = sequelize.define("news", {
+    const Blogs = sequelize.define("blogs", {
         ID :{
             type : DataTypes.INTEGER,
             autoIncrement : true,
@@ -32,5 +32,5 @@ module.exports = (sequelize, DataTypes)=>{
             type : DataTypes.BOOLEAN
         },
     })
-    return News
+    return Blogs
 }

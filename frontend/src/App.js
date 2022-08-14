@@ -28,7 +28,7 @@ function App() {
             <Link to="/">Home</Link>
             { !isAuth ? <Link to="/login">Login</Link> : <></>}
             { isAuth && <Link to="/blogs/add">Create Post</Link>}
-            <Link to="/users/:id">Profile</Link>
+            {/* <Link to="/users/:id">Profile</Link> */}
         </nav>
 
         <Routes>
