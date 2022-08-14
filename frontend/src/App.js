@@ -34,7 +34,7 @@ function App() {
         <Routes>
           <Route path= "/" element={<Home />} />
           <Route path="/login" element={<Login setAuth={setAuth}/>}/>
-          <Route path='/register' element={<Register/>} />
+          <Route path='/register' element={<Register setAuth={setAuth}/>} />
           <Route path='/blogs/add' element={<AddBlog/>} />
           <Route path='/blogs/:id' element={<BlogDetails/>} />
           <Route path='/users/:id/blogs' element={<UserBlogs/>} />

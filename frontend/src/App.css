@@ -39,7 +39,6 @@
   justify-content: center;
 }
 
-
 .form form {
   width: 30vw;
   display: flex;
@@ -59,8 +58,15 @@ label {
   display: flex;
   justify-content: center;
 }
-.button button{
-  background: rgb(195, 0, 255);
+
+.form a {
+  margin-top: 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button button {
+  background: #054668;
   padding: 5px 10px 5px 10px;
   height: 40px;
   width: 90px;
@@ -73,10 +79,24 @@ label {
   cursor: pointer;
 }
 
-.form a {
-  margin-top: 20px;
-  text-decoration: none;
-  cursor: pointer;
+.blog{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
+  /* width: 70%;  */
+  margin-top: 5px;
+}
+.blog h3 {    
+  color: rgb(12, 3, 142);
+  height: 5px;
+  top: 0;
+}
+.blog p {
+  margin-top: 5px;
 }
 
 /* .form {
@@ -123,4 +143,4 @@ label {
   to {
     transform: rotate(360deg);
   }
-} */ ;
+} */ 

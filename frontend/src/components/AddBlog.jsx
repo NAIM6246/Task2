@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -14,18 +15,31 @@ const AddBlog = () => {
   const handleTitle = (e) => {
     setTitle(e.target.value);
   };
-  //   const handleAuthorID = (e) => {
-  //     setAuthorID(e.target.value);
-  //   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    let data = {
-      title,
-      description,
-    };
 
-    console.log(data);
-    navigate("/");
+    if (title === "" || description === "") {
+      window.alert("title or description can not be empty");
+    } else {
+      let data = {
+        title,
+        description,
+        authorID: localStorage.getItem("uid"),
+      };
+      console.log(data);
+
+      axios
+        .post("http://127.0.0.1:5000/blogs/", data)
+        .then((response) => {
+          if (response.status === 201) {
+            navigate("/");
+          }
+        })
+        .catch((error) => {
+          window.alert("failed to create a post");
+        });
+    }
   };
   return (
     <div className="form">
@@ -40,7 +54,7 @@ const AddBlog = () => {
         />
 
         <label>Description</label>
-        <input
+        <textarea
           onChange={handleDescription}
           className="description"
           value={description}

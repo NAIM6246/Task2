@@ -10,10 +10,10 @@ const News = db.news
 
 newsHandler.createNews = async (req,res)=> {
     var newsToCreate = {
-        Title : req.body.title,
-        Description : req.body.description,
-        AuthorID : req.body.authorID,
-        IsDeleted : req.body.isDeleted ?  req.body.isDeleted : false
+        title : req.body.title,
+        description : req.body.description,
+        authorID : req.body.authorID,
+        isDeleted : req.body.isDeleted ?  req.body.isDeleted : false
     };
     // console.log(newsToCreate);
     let news = await News.create(newsToCreate);
@@ -25,7 +25,7 @@ newsHandler.getAllNews = async (req,res) => {
     if(newses) {
         res.status(200).send(newses);
     } else {
-        res.status(400).send('no news found');
+        res.status(404).send('no news found');
     }
 }
 
@@ -36,7 +36,7 @@ newsHandler.getNewsByID = async (req,res) => {
     if(news) {
         res.status(200).send(news);
     } else {
-        res.status(400).send('news not found');
+        res.status(404).send('news not found');
     }
 }
 
@@ -60,17 +60,17 @@ newsHandler.getNewsByAuthorID = async (req,res) => {
           authorID: authorID
         }
       });
-    if(newses) {
+    if(newses.lenght) {
         res.status(200).send(newses);
     } else {
-        res.status(400).send('this author published no news!');
+        res.status(404).send('this author published no news!');
     }
 }
 
 newsHandler.deleteNews = async (req,res) => {
     let newsID = req.params.newsID
     await News.destroy({ where : {id: newsID } })
-    res.status(200).send('news deleted');
+    res.status(204).send('news deleted');
 }
 
 module.exports = newsHandler;

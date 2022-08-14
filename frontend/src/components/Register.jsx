@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+const Register = ({ setAuth }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -50,7 +50,11 @@ const Register = () => {
         .post("http://127.0.0.1:5000/users/", data)
         .then((response) => {
           if (response.status === 201) {
+            console.log(response.data);
             console.log("registration successful");
+            localStorage.setItem("uid", response.data.ID);
+            // localStorage.setItem("isAuth", true);
+            // setAuth(true);
             navigate("/");
           }
         })

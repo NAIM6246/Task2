@@ -15,7 +15,7 @@ app.use(cors(corsOption));
 app.use(express.json());
 app.use(express.urlencoded( {extended: true}));
 
-app.use('/news',newsRoutes);
+app.use('/blogs',newsRoutes);
 app.use('/users',userRoutes);
 
 

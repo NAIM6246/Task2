@@ -5,12 +5,12 @@ const auth = require('../auth/authentication');
 router = express.Router();
 
 router.route('/')
-    .get(auth.Autheticate,newsHandler.getAllNews)
-    .post(auth.Autheticate,newsHandler.createNews);
+    .get(newsHandler.getAllNews)
+    .post(newsHandler.createNews);
 
 router.route('/:newsID')
-    .get(auth.Autheticate,newsHandler.getNewsByID)
-    .put(auth.Autheticate,newsHandler.updateNews)
-    .delete(auth.Autheticate,newsHandler.deleteNews);
+    .get(newsHandler.getNewsByID)
+    .put(newsHandler.updateNews)
+    .delete(newsHandler.deleteNews);
 
 module.exports = router;
