@@ -78,7 +78,7 @@ userHandler.login = async (req,res) => {
             if (isValidPassword){
                 const token = auth.GenrateToken(user);
                 console.log(token);
-                res.status(201).send(token);
+                res.status(200).send(token);
             } else{
                 res.status(400).send('invalid email or password');
             }

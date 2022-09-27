@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const env = require('dotenv');
 
-const newsRoutes = require('./routes/news');
+const blogsRoutes = require('./routes/blogs');
 const userRoutes = require('./routes/user');
 
 const app = express();
@@ -15,7 +15,7 @@ app.use(cors(corsOption));
 app.use(express.json());
 app.use(express.urlencoded( {extended: true}));
 
-app.use('/news',newsRoutes);
+app.use('/blogs',blogsRoutes);
 app.use('/users',userRoutes);
 
 

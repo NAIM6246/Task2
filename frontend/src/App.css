@@ -33,7 +33,73 @@
 }
 
 .form {
-  /* width: 80%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form form {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.form form input,
+label {
+  margin: 5px 0px;
+}
+
+.form form input {
+  height: 30px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+.form a {
+  margin-top: 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button button {
+  background: #054668;
+  padding: 5px 10px 5px 10px;
+  height: 40px;
+  width: 90px;
+  border-width: 2px;
+  margin-top: 10px;
+  border-color: white;
+  border-radius: 5px;
+  font-size: medium;
+  color: aliceblue;
+  cursor: pointer;
+}
+
+.blog{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
+  margin-top: 5px;
+}
+.blog h3 {    
+  color: rgb(12, 3, 142);
+  height: 5px;
+  top: 0;
+}
+.blog p {
+  margin-top: 5px;
+}
+
+/* .form {
+  width: 80%;
   display: grid;
   justify-content: center;
 }
@@ -51,23 +117,24 @@
 .form button {
   display: flex;
   margin-top: 15px;
-}
+} */
 
-.input {
+/* .input {
   width: 400px;
   height: 30px;
-}
+} */
 
-.description {
+/* .description {
   width: 400px;
   height: 100px;
   text-overflow: initial;
-}
+} */
 
+/*
 .App-link {
   color: #61dafb;
 }
-/* 
+ 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -75,4 +142,4 @@
   to {
     transform: rotate(360deg);
   }
-} */
+} */ 

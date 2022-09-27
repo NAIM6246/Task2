@@ -28,13 +28,13 @@ function App() {
             <Link to="/">Home</Link>
             { !isAuth ? <Link to="/login">Login</Link> : <></>}
             { isAuth && <Link to="/blogs/add">Create Post</Link>}
-            <Link to="/users/:id">Profile</Link>
+            {/* <Link to="/users/:id">Profile</Link> */}
         </nav>
 
         <Routes>
           <Route path= "/" element={<Home />} />
           <Route path="/login" element={<Login setAuth={setAuth}/>}/>
-          <Route path='/register' element={<Register/>} />
+          <Route path='/register' element={<Register setAuth={setAuth}/>} />
           <Route path='/blogs/add' element={<AddBlog/>} />
           <Route path='/blogs/:id' element={<BlogDetails/>} />
           <Route path='/users/:id/blogs' element={<UserBlogs/>} />

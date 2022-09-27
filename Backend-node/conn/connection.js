@@ -19,14 +19,14 @@ db.sequelize = new Sequelize(
 
 db.sequelize.authenticate()
     .then(() => {
-        console.log('DAtabase connected');
+        console.log('Database connected');
     }).catch((err) => {
         console.log('Error while connecting Database. '+err);
         // throw new Error('Error connecting db: '+err);
     });
 
 
-db.news = require('../models/domains/news')(db.sequelize,DataTypes)
+db.blogs = require('../models/domains/blogs')(db.sequelize,DataTypes)
 db.users = require('../models/domains/user')(db.sequelize,DataTypes)
 
 db.sequelize.sync({ force:true })
