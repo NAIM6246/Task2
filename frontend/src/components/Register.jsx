@@ -54,7 +54,7 @@ const Register = ({ setAuth }) => {
             console.log("registration successful");
             localStorage.setItem("uid", response.data.ID);
             // localStorage.setItem("isAuth", true);
-            // setAuth(true);
+            setAuth(true);
             navigate("/");
           }
         })
