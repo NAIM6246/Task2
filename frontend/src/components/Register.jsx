@@ -7,27 +7,27 @@ const Register = ({ setAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
+  // const [submitted, setSubmitted] = useState(false);
+  // const [error, setError] = useState(false);
 
   let navigate = useNavigate();
 
   // Handling the name change
   const handleName = (e) => {
     setName(e.target.value);
-    setSubmitted(false);
+    // setSubmitted(false);
   };
 
   // Handling the email change
   const handleEmail = (e) => {
     setEmail(e.target.value);
-    setSubmitted(false);
+    // setSubmitted(false);
   };
 
   // Handling the password change
   const handlePassword = (e) => {
     setPassword(e.target.value);
-    setSubmitted(false);
+    // setSubmitted(false);
   };
 
   // Handling the form submission
@@ -59,7 +59,7 @@ const Register = ({ setAuth }) => {
           }
         })
         .catch((error) => {
-          window.alert("registration failed");
+          window.alert("registration failed",error);
         });
       console.log("requested");
     }

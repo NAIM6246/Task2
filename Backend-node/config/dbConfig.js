@@ -3,7 +3,7 @@ const dbConfig ={};
 dbConfig.DBConfig = {
     HOST : 'localhost',
     USER : 'root',
-    PASSWORD : '',
+    PASSWORD : 'root',
     DB : 'BlogApp',
     dialect : 'mysql',
 }

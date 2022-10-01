@@ -6,7 +6,7 @@ const Login = ({ setAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [submitted, setSubmitted] = useState(false);
+  // const [submitted, setSubmitted] = useState(false);
   // const [error, setError] = useState(false);
 
   let navigate = useNavigate();
@@ -23,7 +23,7 @@ const Login = ({ setAuth }) => {
 
   // Handling the form submission
   const handleSubmit = (e) => {
-    setSubmitted(true);
+    // setSubmitted(true);
     e.preventDefault();
     if (email === "" || password === "") {
       window.alert("invalid email or password");
@@ -48,7 +48,7 @@ const Login = ({ setAuth }) => {
           }
         })
         .catch((error) => {
-          window.alert("login failed");
+          window.alert("login failed", error);
         });
     }
   };
@@ -74,9 +74,9 @@ const Login = ({ setAuth }) => {
             </button>
           </div>
         </form>
-        <a onClick={handleRegistration}>
+        <button className="btn-solid" onClick={handleRegistration}>
           Don't have an account? Register here...
-        </a>
+        </button>
       </div>
     </div>
   );
