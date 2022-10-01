@@ -23,7 +23,7 @@ const Login = ({ setAuth }) => {
 
   // Handling the form submission
   const handleSubmit = (e) => {
-    setSubmitted(true);
+    // setSubmitted(true);
     e.preventDefault();
     if (email === "" || password === "") {
       window.alert("invalid email or password");
@@ -48,7 +48,7 @@ const Login = ({ setAuth }) => {
           }
         })
         .catch((error) => {
-          window.alert("login failed");
+          window.alert("login failed",error);
         });
     }
   };

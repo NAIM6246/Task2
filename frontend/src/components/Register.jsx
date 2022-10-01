@@ -15,19 +15,19 @@ const Register = ({ setAuth }) => {
   // Handling the name change
   const handleName = (e) => {
     setName(e.target.value);
-    setSubmitted(false);
+    // setSubmitted(false);
   };
 
   // Handling the email change
   const handleEmail = (e) => {
     setEmail(e.target.value);
-    setSubmitted(false);
+    // setSubmitted(false);
   };
 
   // Handling the password change
   const handlePassword = (e) => {
     setPassword(e.target.value);
-    setSubmitted(false);
+    // setSubmitted(false);
   };
 
   // Handling the form submission
