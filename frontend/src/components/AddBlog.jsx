@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 const AddBlog = () => {
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [authorID, setAuthorID] = useState("");
+  // const [submitted, setSubmitted] = useState(false);
+  // const [authorID, setAuthorID] = useState("");
   const navigate = new useNavigate();
 
   const handleDescription = (e) => {
@@ -37,7 +37,7 @@ const AddBlog = () => {
           }
         })
         .catch((error) => {
-          window.alert("failed to create a post");
+          window.alert("failed to create a post",error);
         });
     }
   };
