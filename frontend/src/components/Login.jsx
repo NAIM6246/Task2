@@ -48,7 +48,7 @@ const Login = ({ setAuth }) => {
           }
         })
         .catch((error) => {
-          window.alert("login failed",error);
+          window.alert("login failed", error);
         });
     }
   };
@@ -74,9 +74,9 @@ const Login = ({ setAuth }) => {
             </button>
           </div>
         </form>
-        <a onClick={handleRegistration}>
+        <button className="btn-solid" onClick={handleRegistration}>
           Don't have an account? Register here...
-        </a>
+        </button>
       </div>
     </div>
   );

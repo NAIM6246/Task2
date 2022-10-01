@@ -79,7 +79,7 @@ label {
   cursor: pointer;
 }
 
-.blog{
+.blog {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,13 +89,21 @@ label {
   border-width: thin;
   margin-top: 5px;
 }
-.blog h3 {    
+.blog h3 {
   color: rgb(12, 3, 142);
   height: 5px;
   top: 0;
 }
 .blog p {
   margin-top: 5px;
+}
+
+.btn-solid {
+  padding-top: 10px;
+  background: none;
+  border: none;
+  height: auto;
+  width: auto;
 }
 
 /* .form {
@@ -142,4 +150,4 @@ label {
   to {
     transform: rotate(360deg);
   }
-} */ 
+} */
